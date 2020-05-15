@@ -1,0 +1,35 @@
+---
+title: "Developing Data Products - Week 2 Assignment"
+author: "Amir Manafpour"
+date: "5/14/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(leaflet)
+library(htmltools)
+```
+
+# Top 10 Restaurants in Washington DC
+
+The map below plots the top 10 restuarants in Washignton DC according to yelp.com. The results were ordered by "Highest Rated" at the time of this article.
+
+```{r}
+data <- read.csv("dc_restaurants_top10.csv")
+data$popup <- paste("<a href='",data$Link, "'>",data$Name,"</a><br>Rating: ",
+                    data$Rating," (",data$Reviews," reviews)",sep="")
+rest.icon <- makeIcon(
+  iconUrl = "restaurant_icon.png"
+)
+my_map<- leaflet() %>%
+  addTiles() %>%
+  addMarkers(
+    lat = data$Lat,
+    lng = data$Long,
+    label = data$Name,
+    popup = data$popup,
+    clusterOptions = markerClusterOptions()
+    )
+my_map
+```
