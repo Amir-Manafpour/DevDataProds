@@ -1,0 +1,12 @@
+name: DevDataProds_CourseProject
+title: DevDataProds_CourseProject
+username:
+account: amanafpour
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2314270
+bundleId: 3158758
+url: https://amanafpour.shinyapps.io/DevDataProds_CourseProject/
+when: 1589742908.41385
+asMultiple: FALSE
+asStatic: FALSE
