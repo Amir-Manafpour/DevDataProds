@@ -1,0 +1,53 @@
+---
+title: "Developing Data Products Course Project Presentation"
+author: "Amir Manafpour"
+date: "5/17/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+library(plotly)
+library(shiny)
+```
+
+## MPG Prediction App
+
+- This app predicts MPG using two types of regression models:
+  - Linear model
+  - Parabolic model including 2nd order variables
+- The "mtcars" dataset was utilized to develop the regression models.
+- The two most important parameters (weight and horsepower) are used to predict MPG.
+- The interaction of the two variables (wt and hp) were not included.
+
+## mtcars dataset overview
+
+Based on the graph below we can see mpg's relationship with wt and hp.
+
+```{r dataset-overview}
+data("mtcars"); df <- mtcars
+horsepower <- df$hp
+cylinders <- as.factor(df$cyl)
+gg <- qplot(df$wt, df$mpg, xlab = "Weight (1000 lbs)", ylab = "Miles per gallon", size = horsepower, color = cylinders)
+gg
+```
+
+## MPG Prediction App Access Link
+
+- The final version of the app is located on the Shiny Apps server and can be accessed through the link below
+
+https://amanafpour.shinyapps.io/DevDataProds_CourseProject/
+
+- A complete explanation of the app options is also included in the sidebar to provide a more user-friendly experience for those who may not be familiar with the terms included in the app.
+- The app is formatted into a sidebar panel containing options and a main panel with prediction results.
+- The app is also light and quick to load through any browser.
+
+## Final Words on MPG Prediction App
+
+- All other variables except (wt and hp) were statistically insignificant in both regression models.
+- The 2nd order model resulted in a better visual fit compared to the linear model.
+- The interaction of the two variables (wt*hp) was not considered in the models and so the inclusion of the hp parameter only results in a intercept change but the slope of the graph stays the same.
+- The app can be further customized and refined based on more data points in the future.
+- Thanks for viewing my app!
+
