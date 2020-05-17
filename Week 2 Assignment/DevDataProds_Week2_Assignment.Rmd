@@ -15,12 +15,13 @@ library(htmltools)
 
 The map below plots the top 10 restuarants in Washignton DC according to yelp.com. The results were ordered by "Highest Rated" at the time of this article.
 
-```{r}
+```{r, echo=FALSE}
 data <- read.csv("dc_restaurants_top10.csv")
 data$popup <- paste("<a href='",data$Link, "'>",data$Name,"</a><br>Rating: ",
                     data$Rating," (",data$Reviews," reviews)",sep="")
 rest.icon <- makeIcon(
-  iconUrl = "restaurant_icon.png"
+  iconUrl = "restaurant_icon.png",
+  iconWidth = 35
 )
 my_map<- leaflet() %>%
   addTiles() %>%
@@ -28,6 +29,7 @@ my_map<- leaflet() %>%
     lat = data$Lat,
     lng = data$Long,
     label = data$Name,
+    icon = rest.icon,
     popup = data$popup,
     clusterOptions = markerClusterOptions()
     )
